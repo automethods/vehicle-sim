@@ -1,9 +1,7 @@
-import { spawn } from "node:child_process";
 import { cocTests, isCocScenario } from "./coc.js";
-import { guideBandKph, type MeasuredCycle } from "./cycle.js";
+import { guideBandKph } from "./cycle.js";
 import { isRollerTest, reducedBrakeForceFraction, rollerTests } from "./contracts.js";
 import type { CycleInfo, Snapshot } from "./contracts.js";
-import type { diagnosticSummary } from "./diagnostics.js";
 
 const study = "https://doi.org/10.3390/wevj15060268";
 
@@ -169,23 +167,4 @@ export function engdocReport(report: Report) {
     appearance: { title: { font: "sans", size: 32, color: "#10263B" } },
     equations: Object.fromEntries([...equations].map(([id, source]) => [id, { source, notation: "latex" }])),
   };
-}
-
-export function pdfReport(python: string, script: string, report: Report, traceCsv: string,
-  lang: string, benchmark?: MeasuredCycle, diagnostics?: ReturnType<typeof diagnosticSummary>): Promise<Buffer> {
-  return new Promise((resolve, reject) => {
-    const renderer = spawn(python, [script], { timeout: 20_000 });
-    const chunks: Buffer[] = [];
-    let stderr = "";
-    renderer.stderr.setEncoding("utf8");
-    renderer.stderr.on("data", (chunk: string) => { stderr += chunk; });
-    renderer.stdout.on("data", (chunk: Buffer) => chunks.push(chunk));
-    renderer.on("error", reject);
-    renderer.stdin.on("error", () => {}); // The exit handler reports the renderer's diagnostic on a closed pipe.
-    renderer.on("close", (code) => {
-      if (code === 0 && chunks.length) resolve(Buffer.concat(chunks));
-      else reject(new Error(stderr.trim() || "Unable to render the PDF report."));
-    });
-    renderer.stdin.end(JSON.stringify({ ...report, traceCsv, lang, benchmark, diagnostics }));
-  });
 }

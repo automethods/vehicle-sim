@@ -46,10 +46,10 @@ def tick_step(span, intervals):
 
 
 class Report:
-    def __init__(self, run):
+    def __init__(self, run, output=None):
         self.run = run
         self.uk = run["lang"] == "uk"
-        self.page = Canvas(sys.stdout.buffer, pagesize=A4)
+        self.page = Canvas(sys.stdout.buffer if output is None else output, pagesize=A4)
         started_at = run.get("startedAt")
         self.test_start = (
             datetime.fromisoformat(started_at.replace("Z", "+00:00")).astimezone(REPORT_TIMEZONE)
@@ -951,6 +951,12 @@ class Report:
             self.page.addOutlineEntry(title, anchor)
             render(title)
         self.page.save()
+
+
+def render_pdf(payload):
+    output = io.BytesIO()
+    Report(json.loads(payload), output).save()
+    return output.getvalue()
 
 
 if __name__ == "__main__":

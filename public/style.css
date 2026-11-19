@@ -309,6 +309,7 @@ summary { cursor: pointer; }
 .institution-list img { background: #fff; padding: 3px; border-radius: 6px; object-fit: contain; flex: none; }
 .institution-body { padding: 0 14px 12px 61px; display: grid; gap: 8px; color: var(--muted); font-size: .88rem; }
 @media (max-width: 720px) {
+  .actions { flex-wrap: wrap; }
   .institution-list { grid-template-columns: 1fr; }
   .masthead { height: auto; min-height: 62px; gap: 7px; padding-block: 8px; flex-wrap: wrap; }
   .masthead-actions { flex-wrap: wrap; }

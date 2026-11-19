@@ -2,7 +2,9 @@
 
 A virtual roller dynamometer for driving, braking, road-load and charging experiments. The default vehicle is the 2020 Tesla Model 3 Standard Range Plus with an LFP pack and rear-wheel drive.
 
-## Run the lab
+Open the browser lab at [AutoMethods](https://automethods.com/projects/vehicle-sim/). Each tab runs its own experiment. Sign in to your AutoMethods account to export results.
+
+## Local development on Linux
 
 With Node.js 22+ and Python 3.10+ installed, run this from the project folder.
 
@@ -12,7 +14,7 @@ bash run.sh
 
 The launcher opens the local preview at [http://127.0.0.1:8794](http://127.0.0.1:8794) on a graphical Linux desktop when `curl` and `xdg-open` are available. Use `./run.sh --no-browser` for a terminal-only start. The launcher reuses a server with the same build and mode. If a different server is using the port, start on a free `PORT` or stop that server before relaunching. Press **Ctrl+C** in the terminal that started it to stop it. The bundled build runs without installing npm packages. A WebGL-capable browser enables the 3D scene. The controls and telemetry also work with the scene disabled.
 
-Release v0.1.0 includes the built JavaScript and the Python plant under `plant/`. Set `TESLA_SIM_DIR` when the plant is elsewhere, `PYTHON` to choose a Python interpreter, or `PORT` to override the local port. One server instance runs one shared experiment.
+The repository includes the built JavaScript and the Python plant under `plant/`. Set `TESLA_SIM_DIR` when the plant is elsewhere, `PYTHON` to choose a Python interpreter, or `PORT` to override the local port. One server instance runs one shared experiment.
 
 ## Experiments
 
@@ -35,7 +37,7 @@ Under **Run traces**, select **Vehicle speed** or **Pack power** to compare the 
 
 **Run traces** offers PDF and CSV export once a run has data. The local preview enables downloads automatically. A finished test also shows a PDF button below the results. The PDF opens with an unnumbered institutional cover followed by linked contents. The vehicle report header above section 1 shows the actual test start in GMT+2. Page numbers appear in the footer. The PDF follows the UI language and includes dimensioned vehicle views, results, telemetry, numbered references and a mathematical model appendix. The TUM benchmark adds aligned measured pack voltage, smoothed current and minimum and maximum temperatures. A scheduled run in progress is marked **Partial cycle**.
 
-For publication, set `LAB_LOCAL_PREVIEW=0` and serve the lab on the same HTTPS origin as the AutoMethods homepage. For example, set `BASE_PATH=/projects/vehicle-sim` and configure the reverse proxy to forward that prefix to this server. The simulator forwards the AutoMethods session cookies to the homepage session service and checks the response on each download. Signed-out users can run tests and view charts.
+AutoMethods serves the browser build through its existing Cloudflare Pages project. Its browser worker runs the same lab logic and Python model as the local test server, using Pyodide. The browser verifies the existing AutoMethods session before each export. The Pages Worker also protects the report renderer and fonts. Signed-out users can run tests and view charts.
 
 PDF export uses ReportLab with `DejaVuSans.ttf` and `DejaVuSans-Bold.ttf` from the system directory `/usr/share/fonts/truetype/dejavu`. Set `REPORT_FONT_DIR` to the installed font directory on other systems. Pause before exporting multiple formats from a run in progress if all formats must capture the same instant.
 

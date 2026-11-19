@@ -3,12 +3,14 @@ import json
 import sys
 from pathlib import Path
 
-model_dir = Path(sys.argv[1]).resolve()
-sys.path.insert(0, str(model_dir))
+if __name__ == "__main__":
+    model_dir = Path(sys.argv[1]).resolve()
+    sys.path.insert(0, str(model_dir))
 from model3_ev import DriverInput, EVSimulation, tum_dyno_parameters
 
 sim = None
-for line in sys.stdin:
+def exchange(line):
+    global sim
     try:
         request = json.loads(line)
         if request["op"] == "reset":
@@ -34,6 +36,11 @@ for line in sys.stdin:
                 sim.step(control)
         else:
             raise ValueError("Reset the vehicle before stepping.")
-        print(json.dumps({"ok": True, "state": sim.snapshot()}, allow_nan=False), flush=True)
+        return json.dumps({"ok": True, "state": sim.snapshot()}, allow_nan=False)
     except (ValueError, TypeError, KeyError) as error:
-        print(json.dumps({"ok": False, "error": str(error)}), flush=True)
+        return json.dumps({"ok": False, "error": str(error)})
+
+
+if __name__ == "__main__":
+    for line in sys.stdin:
+        print(exchange(line), flush=True)

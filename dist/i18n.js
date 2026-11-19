@@ -319,18 +319,21 @@ export function setupLanguage(onChange) {
         const value = node.getAttribute(name);
         return value && ukrainian.has(value) ? [{ node, name, value }] : [];
     }));
-    const buttons = [...document.querySelectorAll("[data-language]")];
+    const buttons = [...document.querySelectorAll("button[data-language]")];
+    const shared = globalThis.AutoMethodsLanguage;
     let saved = null;
     try {
         saved = localStorage.getItem("vehicle-sim-language");
     }
     catch { }
-    let current = saved === "en" || saved === "uk" ? saved
-        : navigator.languages.some((tag) => /^uk(?:-|$)|(?:^|-)UA(?:-|$)/i.test(tag)) ? "uk" : "en";
+    let current = shared?.language ?? (saved === "en" || saved === "uk" ? saved
+        : navigator.languages.some((tag) => /^uk(?:-|$)|(?:^|-)UA(?:-|$)/i.test(tag)) ? "uk" : "en");
     const translate = (value) => current === "uk" ? ukrainian.get(value) ?? value
         : value === "Actual readout" ? "Actual" : value === "Target readout" ? "Target" : value;
     const apply = () => {
         document.documentElement.lang = current;
+        if (shared)
+            document.documentElement.dataset.language = current;
         document.title = translate("Vehicle testing on a roller dynamometer");
         for (const [node, original] of textNodes)
             node.nodeValue = original.replace(original.trim(), translate(original.trim()));
@@ -339,13 +342,22 @@ export function setupLanguage(onChange) {
         for (const button of buttons)
             button.setAttribute("aria-pressed", String(button.dataset.language === current));
     };
+    window.addEventListener("pageshow", (event) => {
+        if (!event.persisted || !shared || current === shared.language)
+            return;
+        current = shared.language;
+        apply();
+        onChange(current);
+    });
     for (const button of buttons)
         button.addEventListener("click", () => {
             current = button.dataset.language === "uk" ? "uk" : "en";
-            try {
-                localStorage.setItem("vehicle-sim-language", current);
+            if (!shared) {
+                try {
+                    localStorage.setItem("vehicle-sim-language", current);
+                }
+                catch { }
             }
-            catch { }
             apply();
             onChange(current);
         });
