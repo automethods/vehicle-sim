@@ -55,6 +55,7 @@ Lomakin V. O.|Ломакін В. О.
 Contributors|Учасники розроблення
 Melnychuk S. V.|Мельничук С. В.
 , PhD in Engineering, Associate Professor|, к. т. н., доц.
+, Doctor of Technical Sciences, Associate Professor|, д. т. н., доц.
 AI assistance with writing, translation, programming and verification (GPT-6 family).|Допомога ШІ з підготовкою текстів, перекладом, програмуванням і перевіркою (моделі родини GPT-6).
 Vehicle datasheet|Технічні дані автомобіля
 Connecting|Підключення
