@@ -1,0 +1,57 @@
+[
+  {
+    "title": "Rosenberger N., Rosner P., Bilfinger P. et al. Quantifying the State of the Art of Electric Powertrains in Battery Electric Vehicles: Comprehensive Analysis of the Tesla Model 3 on the Vehicle Level. World Electric Vehicle Journal. 2024. Vol. 15, No. 6. Art. 268. Sect. 2.2.3, Table A1 and Appendix B. DOI: 10.3390/wevj15060268.",
+    "url": "https://doi.org/10.3390/wevj15060268"
+  },
+  {
+    "title": "Tesla, Inc. Model 3 Owner’s Manual (2017–2023). Exterior Dimensions. Tesla.",
+    "url": "https://www.tesla.com/ownersmanual/2017_2023_model3/en_us/GUID-56562137-FC31-4110-A13C-9A9FC6657BF0.html"
+  },
+  {
+    "title": "U.S. Department of Energy, U.S. Environmental Protection Agency. 2020 Tesla Model 3 Standard Range Plus. FuelEconomy.gov. Vehicle record 42278.",
+    "url": "https://www.fueleconomy.gov/feg/noframes/42278.shtml"
+  },
+  {
+    "title": "U.S. Environmental Protection Agency. Fuel Economy and EV Range Testing. Green Vehicles.",
+    "url": "https://www.epa.gov/greenvehicles/fuel-economy-and-ev-range-testing"
+  },
+  {
+    "title": "United Nations. UN Regulation No. 154 (WLTP). Official Journal of the European Union. 2026. L 2026/1130. Annex B1 (cycles), Annex B6 (test procedure) and Annex B8 (electric energy consumption and range).",
+    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ%3AL_202601130"
+  },
+  {
+    "title": "Rosenberger N. et al. Tesla Model 3 vehicle-level measurements [dataset]. Technical University of Munich, mediaTUM. 2024. Dataset_article/3_Driving_Range/2_Standard_Driving/WLTP.csv. DOI: 10.14459/2024mp1735494.",
+    "url": "https://doi.org/10.14459/2024mp1735494"
+  },
+  {
+    "title": "Ameer Studio. Tesla 2018 Model 3 [3D model]. Sketchfab. Adapted for axle alignment, wheel animation, windscreen visibility and lighting.",
+    "url": "https://sketchfab.com/3d-models/tesla-2018-model-3-5ef9b845aaf44203b6d04e2c677e444f",
+    "license": { "title": "CC BY 4.0", "url": "https://creativecommons.org/licenses/by/4.0/" }
+  },
+  {
+    "title": "United Nations. UN Regulation No. 68. Measurement of the maximum speed, Annex 3.",
+    "url": "https://unece.org/fileadmin/DAM/trans/main/wp29/wp29regs/r068a1e.pdf"
+  },
+  {
+    "title": "SAE International. J1979-DA. Digital Annex of E/E Diagnostic Test Modes. Vehicle speed, service 01, PID 0D.",
+    "url": "https://doi.org/10.4271/J1979DA_201702"
+  },
+  {
+    "title": "Ford Motor Company. OBD System Operation Summary for Hybrid Electric Vehicles. High-Voltage Interlock Monitor, DTC P0A0A.",
+    "url": "https://www.fordservicecontent.com/ford_content/catalog/motorcraft/OBDSM1901_HEV.pdf"
+  },
+  {
+    "title": "Ministry of Infrastructure of Ukraine. Requirements and methods for inspecting wheeled vehicle construction and technical condition. Order No. 710 of 26 November 2012, section II, item 2, table 2.",
+    "titleUk": "Міністерство інфраструктури України. Вимоги до перевірки конструкції та технічного стану колісного транспортного засобу, методи такої перевірки. Наказ від 26.11.2012 № 710. Розділ II, пункт 2, таблиця 2.",
+    "url": "https://zakon.rada.gov.ua/laws/show/z2169-12"
+  },
+  {
+    "title": "United Nations. UN Regulation No. 13-H. Approval of passenger cars with regard to braking. Annex 3, paragraph 1.1.2.",
+    "url": "https://eur-lex.europa.eu/eli/reg/2026/502/oj/eng"
+  },
+  {
+    "title": "Swedish Transport Agency (Transportstyrelsen). TSFS 2017:54 on periodic vehicle inspection. Annex 1, section 4.1.1, alternative method for service brake deceleration.",
+    "titleUk": "Транспортне агентство Швеції (Transportstyrelsen). TSFS 2017:54 щодо періодичного технічного огляду. Додаток 1, пункт 4.1.1, альтернативний метод перевірки сповільнення робочою гальмівною системою.",
+    "url": "https://www.transportstyrelsen.se/TSFS/TSFS%202017_54k.pdf#page=48"
+  }
+]

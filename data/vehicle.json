@@ -1,0 +1,18 @@
+{
+  "id": "tesla-model3-sr-plus-lfp-2020",
+  "title": "Model 3 Standard Range Plus",
+  "configuration": "2020 · LFP · RWD",
+  "plate": "SIM·003",
+  "lengthM": 4.695,
+  "widthM": 1.85,
+  "heightM": 1.445,
+  "wheelbaseM": 2.875,
+  "trackM": 1.58,
+  "frontOverhangM": 0.841,
+  "rearOverhangM": 0.978,
+  "groundClearanceM": 0.140,
+  "wheelRadiusM": 0.3468,
+  "rollerRadiusM": 0.6096,
+  "rollerOutsideSpanM": 2.75,
+  "rollerCenterGapM": 0.72
+}
