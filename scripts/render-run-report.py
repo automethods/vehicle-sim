@@ -37,6 +37,7 @@ M1_STEADY_DECELERATION_M_S2 = 5.8
 BODY_SIZE = 9
 HEADING_SIZE = 12
 REPORT_TIMEZONE = timezone(timedelta(hours=2))
+SHOW_POLISSIA_BRANDING = False
 
 
 def tick_step(span, intervals):
@@ -242,26 +243,33 @@ class Report:
         center = A4[0] / 2
         self.text(center, 775, t("Ministry of Education and Science of Ukraine", "Міністерство освіти і науки України"),
                   HEADING_SIZE, align="center")
-        self.text(center, 754, t("Polissia National University", "Поліський національний університет"),
+        if SHOW_POLISSIA_BRANDING:
+            self.text(center, 754, t("Polissia National University", "Поліський національний університет"),
+                      HEADING_SIZE, bold=True, align="center")
+            self.text(center, 733, t("Department of Agricultural Engineering and Technical Service",
+                                      "Кафедра агроінженерії та технічного сервісу"),
+                      HEADING_SIZE, align="center")
+            college_y = 702
+            logos = [("models/report-polissia.png", -99, 64),
+                     ("models/report-college.png", -12, 49),
+                     ("public/department.png", 89, 99)]
+        else:
+            college_y = 743
+            logos = [("models/report-college.png", -54, 49),
+                     ("public/department.png", 32, 99)]
+        self.text(center, college_y, t("Zhytomyr Agrotechnical Professional College", "Житомирський агротехнічний фаховий коледж"),
                   HEADING_SIZE, bold=True, align="center")
-        self.text(center, 733, t("Department of Agricultural Engineering and Technical Service",
-                                  "Кафедра агроінженерії та технічного сервісу"),
+        self.text(center, college_y - 21, t("Department of Automotive Transport", "Кафедра «Автомобільний транспорт»"),
                   HEADING_SIZE, align="center")
-        self.text(center, 702, t("Zhytomyr Agrotechnical Professional College", "Житомирський агротехнічний фаховий коледж"),
-                  HEADING_SIZE, bold=True, align="center")
-        self.text(center, 681, t("Department of Automotive Transport", "Кафедра «Автомобільний транспорт»"),
-                  HEADING_SIZE, align="center")
-        for path, offset, width in (
-            ("models/report-polissia.png", -99, 64),
-            ("models/report-college.png", -12, 49),
-            ("public/department.png", 89, 99),
-        ):
-            self.page.drawImage(str(ROOT / path), center + offset - width / 2, 607, width, 49,
+        logo_y = college_y - 95
+        for path, offset, width in logos:
+            self.page.drawImage(str(ROOT / path), center + offset - width / 2, logo_y, width, 49,
                                 mask="auto", preserveAspectRatio=True)
 
-        self.text(center, 564, self.title, HEADING_SIZE, bold=True, align="center")
-        self.text(center, 528, self.experiment_title(), HEADING_SIZE, align="center")
-        self.text(center, 506, self.vehicle_label, HEADING_SIZE, align="center")
+        title_y = logo_y - 43
+        self.text(center, title_y, self.title, HEADING_SIZE, bold=True, align="center")
+        self.text(center, title_y - 36, self.experiment_title(), HEADING_SIZE, align="center")
+        self.text(center, title_y - 58, self.vehicle_label, HEADING_SIZE, align="center")
 
         fields = [
             (315, 62, 158, 533, t("Student", "ПІБ студента")),

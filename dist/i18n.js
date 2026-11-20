@@ -52,7 +52,7 @@ About the project|Про проєкт
 Founder|Засновник
 Lomakin V. O.|Ломакін В. О.
 , PhD in Engineering|, к. т. н.
-Contributors|Учасники розроблення
+Contributors|Учасники розробки
 Melnychuk S. V.|Мельничук С. В.
 , PhD in Engineering, Associate Professor|, к. т. н., доц.
 , Doctor of Technical Sciences, Associate Professor|, д. т. н., доц.
@@ -252,7 +252,7 @@ Download test report (PDF)|Завантажити звіт (PDF)
 Sign in to download the report|Увійти для завантаження звіту
 References|Список джерел
 3D model credit and license|Авторство й ліцензія 3D-моделі
-Contributors and institutions|Учасники розроблення та заклади освіти
+Educational institution|Заклад освіти
 Zhytomyr Agrotechnical Professional College|Житомирський агротехнічний фаховий коледж
 Department of Automotive Transport|Кафедра «Автомобільний транспорт»
 Polissia National University|Поліський національний університет
